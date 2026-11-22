@@ -65,6 +65,28 @@ button{cursor:pointer;font-family:inherit}
 }
 .btn:hover{background: var(--accent-deep);text-decoration: none;transform: translateY(-2px)}
 .btn:active{transform: translateY(0) scale(.98)}
+
+/* glow + wave animation for primary CTAs (first screen) */
+.btn-anim{
+  position: relative;overflow: hidden;
+  animation: btnGlow 2.8s ease-in-out infinite;
+}
+.btn-anim::after{
+  content: "";position: absolute;top: -25%;bottom: -25%;left: 0;width: 45%;
+  background: linear-gradient(100deg, transparent 18%, rgba(255,255,255,.55) 50%, transparent 82%);
+  transform: translateX(-230%) skewX(-20deg);
+  animation: btnWave 3.6s cubic-bezier(.45,0,.25,1) .7s infinite;
+  pointer-events: none;
+}
+.btn-anim:hover{animation-duration: 1.6s}
+@keyframes btnGlow{
+  0%,100%{box-shadow: 0 0 14px 0 color-mix(in oklch, var(--accent) 22%, transparent)}
+  50%{box-shadow: 0 0 34px 7px color-mix(in oklch, var(--accent) 62%, transparent)}
+}
+@keyframes btnWave{
+  0%{transform: translateX(-230%) skewX(-20deg)}
+  46%,100%{transform: translateX(350%) skewX(-20deg)}
+}
 .btn-ghost{background: transparent;color: var(--ink);border: 2px solid color-mix(in oklch, var(--ink) 30%, transparent)}
 .btn-ghost:hover{background: var(--ink);color: var(--surface);border-color: var(--ink)}
 .burger{display: none;background: none;border: none;width: 48px;height: 48px;padding: 10px}
@@ -298,7 +320,7 @@ button{cursor:pointer;font-family:inherit}
       <a href="#price">Прайс</a>
       <a href="#reviews">Отзывы</a>
       <a href="#contacts">Контакты</a>
-      <a class="btn" href="#booking">Записаться</a>
+      <a class="btn btn-anim" href="#booking">Записаться</a>
     </nav>
   </div>
 </header>
@@ -316,7 +338,7 @@ button{cursor:pointer;font-family:inherit}
         <h1>Груминг, после которого питомцу хочется обниматься</h1>
         <p class="lead">Моем, стрижём и балуем собак и кошек в светлой студии на Зелёной. Бережные мастера, гипоаллергенная косметика и ни одного испуганного хвоста за 7 лет работы.</p>
         <div class="hero-cta">
-          <a class="btn" href="#booking">Записаться онлайн</a>
+          <a class="btn btn-anim" href="#booking">Записаться онлайн</a>
           <a class="btn btn-ghost" href="#price">Смотреть прайс</a>
         </div>
         <div class="stats">
